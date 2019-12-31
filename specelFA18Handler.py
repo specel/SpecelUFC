@@ -75,3 +75,12 @@ class FA18Handler(AircraftHandler):
         if selector in ('ScratchpadString1Display', 'ScratchpadString2Display', 'COMM1Display', 'COMM2Display'):
             value = value.replace('`', '1').replace('~', '2')
         super().setData(selector, value, update)
+
+    def button_handle_specific_ac(self, buttonPressed):
+        action = {1: 'UFC_COMM1_CHANNEL_SELECT DEC',
+                  2: 'UFC_COMM1_CHANNEL_SELECT INC',
+                  3: 'UFC_COMM2_CHANNEL_SELECT DEC',
+                  4: 'UFC_COMM2_CHANNEL_SELECT INC'}
+        print(f'{self.__class__.__name__} Button: {buttonPressed}')
+        print(f'Request: {action[buttonPressed]}')
+        return f'{action[buttonPressed]}\n'
