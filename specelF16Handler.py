@@ -27,7 +27,3 @@ class F16Handler(AircraftHandler):
             offset = (i - 1) * 8
             self.g13.draw.text((0, offset), getattr(self, f'DEDLine{i}'), 1, self.g13.font1)
         self.g13.updateDisplay(self.g13.img)
-
-    def buttonHandleSpecificAC(self, buttonPressed):
-        print(f'{self.__class__.__name__} Button: {buttonPressed}')
-        return '\n'

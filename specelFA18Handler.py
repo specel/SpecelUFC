@@ -76,12 +76,11 @@ class FA18Handler(AircraftHandler):
             value = value.replace('`', '1').replace('~', '2')
         super().setData(selector, value, update)
 
-    def buttonHandleSpecificAC(self, buttonPressed):
-        if buttonPressed == 1:
-            return "UFC_COMM1_CHANNEL_SELECT DEC\n"
-        elif buttonPressed == 2:
-            return "UFC_COMM1_CHANNEL_SELECT INC\n"
-        elif buttonPressed == 3:
-            return "UFC_COMM2_CHANNEL_SELECT DEC\n"
-        elif buttonPressed == 4:
-            return "UFC_COMM2_CHANNEL_SELECT INC\n"
+    def button_handle_specific_ac(self, buttonPressed):
+        action = {1: 'UFC_COMM1_CHANNEL_SELECT DEC',
+                  2: 'UFC_COMM1_CHANNEL_SELECT INC',
+                  3: 'UFC_COMM2_CHANNEL_SELECT DEC',
+                  4: 'UFC_COMM2_CHANNEL_SELECT INC'}
+        print(f'{self.__class__.__name__} Button: {buttonPressed}')
+        print(f'Request: {action[buttonPressed]}')
+        return f'{action[buttonPressed]}\n'

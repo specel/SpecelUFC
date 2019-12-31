@@ -1,13 +1,10 @@
-from abc import abstractmethod
-
-
 class AircraftHandler:
     def __init__(self, displayHandler):
         self.g13 = displayHandler
 
-    @abstractmethod
     def buttonHandleSpecificAC(self, buttonPressed):
-        pass
+        print(f'{self.__class__.__name__} Button: {buttonPressed}')
+        return '\n'
 
     def updateDisplay(self):
         # clear bitmap
